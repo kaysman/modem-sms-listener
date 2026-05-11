@@ -1,0 +1,16 @@
+{
+  "name": "modem-sms-listener",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --env-file=.env app.js"
+  },
+  "dependencies": {
+    "nats": "^2.29.3",
+    "serialport-gsm": "^4.0.1"
+  }
+}
