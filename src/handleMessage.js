@@ -19,6 +19,7 @@ export function handleMessage(port, messageDetails) {
 
     publishGpsLocation({
       serial_no: bariox.serialno,
+      datetime: bariox.datetime,
       lat: bariox.lat,
       lng: bariox.lon,
       speed: bariox.speed,

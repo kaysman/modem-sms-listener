@@ -8,7 +8,7 @@ process.on('uncaughtException', (err) => {
   console.error('Uncaught error (likely bad PDU on wrong port):', err.message);
 });
 
-await connectNats();
+connectNats();
 
 const device = modem.Modem();
 
