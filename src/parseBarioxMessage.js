@@ -14,6 +14,8 @@ export function parseBarioxMessage(text) {
     datetime: `${date} ${time}`,
     lat,
     lon,
+    lat_direction: latDir,
+    long_direction: lonDir,
     speed: rawSpeed != null ? parseFloat(rawSpeed) : undefined,
     battery: rawBattery != null ? parseFloat(rawBattery) : 0,
   };

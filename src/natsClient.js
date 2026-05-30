@@ -1,9 +1,10 @@
 import { connect, JSONCodec } from 'nats';
 import { appendFile, readFile, rename, unlink } from 'fs/promises';
+import { buildGpsData } from './buildGpsData.js';
 
 const NATS_URL = process.env.NATS_URL;
-const FALLBACK_FILE = process.env.GPS_FALLBACK_FILE ?? 'gps-fallback.jsonl';
-const ARCHIVE_FILE = process.env.GPS_ARCHIVE_FILE ?? 'gps-archive.jsonl';
+const FALLBACK_FILE = process.env.GPS_FALLBACK_FILE ?? 'data/gps-fallback.jsonl';
+const ARCHIVE_FILE = process.env.GPS_ARCHIVE_FILE ?? 'data/gps-archive.jsonl';
 
 if (!NATS_URL) {
   console.error(`[nats] NATS_URL is not set — GPS location events will be written to ${FALLBACK_FILE}`);
@@ -99,8 +100,8 @@ async function drainFallback() {
         continue;
       }
       try {
-        const entry = JSON.parse(line);
-        nc.publish('gps.location.received', jc.encode(entry.data));
+        const data = buildGpsData(JSON.parse(line));
+        nc.publish('gps.location.received', jc.encode(data));
       } catch (err) {
         console.error(`[nats] Drain publish failed: ${err.message}`);
         unsent.push(line);
@@ -129,7 +130,7 @@ async function drainFallback() {
 }
 
 async function appendToArchive(data) {
-  const line = JSON.stringify({ ts: new Date().toISOString(), data }) + '\n';
+  const line = JSON.stringify(data) + '\n';
   try {
     await appendFile(ARCHIVE_FILE, line);
   } catch (err) {
@@ -138,7 +139,7 @@ async function appendToArchive(data) {
 }
 
 async function appendToFallback(data, reason) {
-  const line = JSON.stringify({ ts: new Date().toISOString(), data }) + '\n';
+  const line = JSON.stringify(data) + '\n';
   try {
     await appendFile(FALLBACK_FILE, line);
     console.warn(`[nats] ${reason} — wrote GPS data to ${FALLBACK_FILE}`);
@@ -147,15 +148,17 @@ async function appendToFallback(data, reason) {
   }
 }
 
-export function publishGpsLocation(data) {
-  appendToArchive(data);
+export function publishGpsLocation(input, { archive = true } = {}) {
+  const data = buildGpsData(input);
+  if (archive) appendToArchive(data);
   if (!nc || nc.isClosed() || !isConnected) {
     appendToFallback(data, 'Not connected');
-    return;
+    return data;
   }
   try {
     nc.publish('gps.location.received', jc.encode(data));
   } catch (err) {
     appendToFallback(data, `Publish failed: ${err.message}`);
   }
+  return data;
 }

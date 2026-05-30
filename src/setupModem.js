@@ -1,4 +1,5 @@
 import { handleMessage } from './handleMessage.js';
+import { startSmsServer, setSimNumber } from './smsServer.js';
 
 // Runs after the port opens: initialize → PDU mode → drain SIM backlog → log SIM number.
 export function setupModem(device, port) {
@@ -12,7 +13,9 @@ export function setupModem(device, port) {
       }
       console.log(`[${port}] PDU mode + CNMI set:`, res);
 
+      startSmsServer(device, port);
       logStorageCapacity(device, port);
+      logSimNumber(device, port);
 
       // Drain messages already stored on the SIM (24h backlog from the tracker)
       // through the same pipeline as freshly arrived SMS. Deletion is skipped
@@ -61,6 +64,7 @@ function logSimNumber(device, port) {
     const match = String(result?.data ?? result).match(/\+CNUM:[^,]*,"?([^",]+)"?/);
     if (match) {
       console.log(`[${port}] SIM phone number: ${match[1]}`);
+      setSimNumber(match[1]);
     } else {
       console.log(`[${port}] SIM phone number: not provisioned on this SIM`);
     }

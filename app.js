@@ -12,6 +12,10 @@ connectNats();
 
 const device = modem.Modem();
 
+if (process.env.MODEM_DEBUG === '1') {
+  device.logger = { debug: (msg) => console.log(`[modem-debug] ${msg}`) };
+}
+
 device.on('open', () => {
   console.log(`[${port}] Port Opened`);
   setupModem(device, port);

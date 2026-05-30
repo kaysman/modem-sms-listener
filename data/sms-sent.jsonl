@@ -1,0 +1,17 @@
+{"ts":"2026-05-22T12:50:35.066Z","to":"+99363494718","message":"test message","status":"success","messageId":"eBxHnpjhUBWVbU2ndLlsyYJs9","error":null}
+{"ts":"2026-05-22T12:53:15.785Z","to":"+99371061259","message":"#000000,RDBL","status":"success","messageId":"5JxdPCYccqBdMkQ4UMwmJ1GOl","error":null}
+{"ts":"2026-05-22T12:54:49.376Z","to":"+99371061259","message":"#000000,RDVE","status":"success","messageId":"XEYMueEmBd5SzP7fDe1oEJI05","error":null}
+{"ts":"2026-05-22T12:58:48.855Z","to":"+99371061275","message":"#000000,RDBL","status":"success","messageId":"uEqYPXDUem00mHh2GksjOrd72","error":null}
+{"ts":"2026-05-22T12:59:48.615Z","to":"+99371061275","message":"#123123,RDBL","status":"success","messageId":"ZPWQNUyTxdGmiQP3ymAmMKccc","error":null}
+{"ts":"2026-05-22T13:37:20.596Z","to":"+99371061259","message":"#000000,RDBL","status":"success","messageId":"q2dq0ejgZtSBVtOpcDGdZn0F8","error":null}
+{"ts":"2026-05-22T13:38:12.316Z","to":"+99371061275","message":"#000000,RDBL","status":"fail","messageId":"q6hjH886yTRL87Kaj5JCjGZmt","error":"unknown"}
+{"ts":"2026-05-22T13:38:45.716Z","to":"+99371061275","message":"#000000,RDBL","status":"fail","messageId":"wXmKGslDouXQMUdpf63rvMNPd","error":"unknown"}
+{"ts":"2026-05-22T13:39:42.847Z","to":"+99371061275","message":"#000000,RDBL","status":"fail","messageId":"ZUUzbCO0FZ51oeoM3uxZ4Qqdm","error":"unknown"}
+{"ts":"2026-05-22T13:40:59.975Z","to":"+99371061275","message":"#000000,RDBL","status":"fail","messageId":"Jl30x6898kWNJnwpYr7QxMxUd","error":"unknown"}
+{"ts":"2026-05-22T13:45:27.833Z","to":"+99371061275","message":"#000000,RDBL","status":"fail","messageId":"7huYOK9VgrLu2Y5XIdRXlXkAx","error":"Message Failed +CMS ERROR: 500"}
+{"ts":"2026-05-22T13:46:19.261Z","to":"+99363494718","message":"bah","status":"success","messageId":"fQ8SOh6CtJ4GLGqVavAwN5nlB","error":null}
+{"ts":"2026-05-22T13:47:22.652Z","to":"+99371061275","message":"#000000,RDBL","status":"fail","messageId":"n5Ex6ZkqMKMg0VJcQmaVR7buy","error":"Message Failed +CMS ERROR: 500"}
+{"ts":"2026-05-22T13:48:11.657Z","to":"+99371061259","message":"#000000,RDBL","status":"fail","messageId":"BKAcun2nFRH1Nn23Nht5ELl3T","error":"Message Failed +CMS ERROR: 500"}
+{"ts":"2026-05-22T13:51:18.940Z","to":"+99371061275","message":"#000000,RDBL","status":"fail","messageId":"OQHVXzkAFd7xbAtskfE1loE25","error":"Message Failed +CMS ERROR: 500"}
+{"ts":"2026-05-23T05:29:25.254Z","to":"+99363494718","message":"ses gitdi","status":"success","messageId":"mHoFA2MtNWckFv9f4Io6tJxPD","error":null}
+{"ts":"2026-05-23T05:45:36.564Z","to":"+99363494718","message":"test","status":"success","messageId":"6I5aa01o9ZpfmOigkh71HMmh2","error":null}
