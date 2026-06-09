@@ -1,19 +1,27 @@
-// Parses the extended tracker SMS format:
-// *MM/DD/YY,HH:MM:SS,SN,lat,N/S,lon,E/W,speed,height,&,battery,charging,unlock,chain_break,sim,top_cover,motor_jam#
-// Returns parsed object or null if the message doesn't match this format.
-export function parseTrackerMessage(text) {
+export function parseTrackerMessage(text: string) {
   const match = text.match(
-    /^\*(\d{2}\/\d{2}\/\d{2}),(\d{2}:\d{2}:\d{2}),(\d+)\s*,([\d.]+),([NS]),([\d.]+),([EW]),(\d+),(\d+),&,(\d+),([01]),([01]),([01]),([01]),([01]),([01])#$/
+    /^\*(\d{2}\/\d{2}\/\d{2}),(\d{2}:\d{2}:\d{2}),(\d+)\s*,([\d.]+),([NS]),([\d.]+),([EW]),(\d+),(\d+),&,(\d+),([01]),([01]),([01]),([01]),([01]),([01])#$/,
   );
   if (!match) return null;
 
   const [
     ,
-    date, time, serialno,
-    rawLat, latDir,
-    rawLon, lonDir,
-    rawSpeed, rawHeight, rawBattery,
-    rawCharging, rawUnlock, rawChainBreak, rawSim, rawTopCover, rawMotorJam,
+    date,
+    time,
+    serialno,
+    rawLat,
+    latDir,
+    rawLon,
+    lonDir,
+    rawSpeed,
+    rawHeight,
+    rawBattery,
+    rawCharging,
+    rawUnlock,
+    rawChainBreak,
+    rawSim,
+    rawTopCover,
+    rawMotorJam,
   ] = match;
 
   const lat = latDir === 'S' ? -parseFloat(rawLat) : parseFloat(rawLat);
